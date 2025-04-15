@@ -1,0 +1,596 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+ /* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-left a, .nav-right a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+  color: #ff6f61; /* Change to your desired hover color */
+}
+
+.navbar.hidden {
+    top: -80px; /*move navbar out of view*/
+  }
+.brand-logo {
+  width: 100px; /* Adjust based on your logo size */
+  height: auto;
+}
+
+.search-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.search-input {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px; /* Adjust as needed */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.search-icon:hover .search-input {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Navbar Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-left, .nav-right {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .brand-logo {
+    margin: 1rem 0;
+  }
+
+  .search-icon {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  /* Optional: Add a hamburger menu icon */
+  .hamburger {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .nav-left, .nav-right {
+    display: none; /* Hide links by default */
+  }
+
+  .navbar.active .nav-left,
+  .navbar.active .nav-right {
+    display: flex; /* Show links when active */
+  }
+}
+  /* Hero Section */
+ 
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Smooth transition for fading */
+  }
+  
+  .hero-image.active img {
+    opacity: 1; /* Only the active image is visible */
+  }
+
+  .primary-image img {
+    animation-delay: 0s;
+  }
+  
+  .secondary-image img {
+    animation-delay: 4s; /* Adjust delay as needed */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+   /* Explore Link Styling */
+.explore-link {
+  position: absolute;
+  bottom: 30px; /* Distance from the bottom of the hero section */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  text-align: center;
+  z-index: 10; /* Ensure it's above the hero images */
+}
+
+.explore-link a {
+  text-decoration: underline;
+  color: white; /* Change to match your theme */
+  font-size: 1rem; /* Adjust size as needed */
+  font-weight: bold;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.explore-link a:hover {
+  background-color: rgba(180, 175, 175, 0.8); /* Change to your desired hover color */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.explore-link a:active {
+  color: skyblue;
+} 
+
+/*clothing section*/
+.clothing-section {
+  padding:4rem 2rem;
+  background-color: #f9f9f9; /* Light background for contrast */
+  
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.explore-all {
+  text-decoration: none;
+  color: #ff6f61; /* Match your brand color */
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.explore-all:hover {
+  color: #ff3c29; /* Darker shade on hover */
+}
+
+.clothing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+  gap: 2rem;
+}
+
+.clothing-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.clothing-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s ease;
+}
+
+.primary-image {
+  opacity: 1;
+}
+
+.secondaryy-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.overlay span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Hover Effects */
+.clothing-item:hover .primary-image {
+  opacity: 0;
+}
+
+.clothing-item:hover .secondaryy-image {
+  opacity: 1;
+}
+
+.clothing-item:hover .overlay {
+  transform: translateY(0);
+}
+
+/* Styling for the clickable link */
+.clothing-link {
+  text-decoration: none; /* Remove underline */
+  display: block; /* Make the link behave like a block element */
+  color: inherit; /* Inherit text color from parent */
+}
+
+.clothing-link:hover {
+  text-decoration: none; /* Ensure no underline appears on hover */
+}
+@media (max-width: 1024px) {
+  .clothing-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .clothing-grid {
+    grid-template-columns: 1fr; /* 1 item per row */
+  }
+}
+
+/* Full-Width Image Section */
+.full-width-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: auto; /*Changed from auto*/
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Overlay Content */
+.content-overlay {
+  position: absolute;
+  bottom: 2rem; /* Distance from the bottom */
+  right: 2rem; /* Distance from the right */
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px; /* Rounded corners */
+  max-width: 400px; /* Limit the width of the overlay */
+  text-align: right;
+}
+
+.content-overlay p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.content-overlay .explore-link {
+  text-decoration: underline;
+  color: red; /* Match your brand color */
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  padding: 0;
+  margin: -20px;
+  margin-left: 20px;
+}
+
+.content-overlay .explore-link:hover {
+  color: white; /* Darker shade on hover */
+}
+
+/* Responsive Full-Width Section Styles */
+@media (max-width: 768px) {
+  .content-overlay {
+    bottom: 1rem; /* Reduce distance from the bottom */
+    right: 1rem; /* Reduce distance from the right */
+    padding: 1rem; /* Reduce padding */
+    max-width: 100%; /* Allow overlay to span full width */
+  }
+
+  .content-overlay p {
+    font-size: 0.9rem; /* Reduce font size */
+    margin-bottom: 0.5rem; /* Reduce spacing */
+  }
+
+  .content-overlay .explore-link {
+    font-size: 0.9rem; /* Reduce font size */
+  }
+}
+
+/* Two-Image Section */
+.two-image-section {
+  padding: 4rem 2rem; /* Space from the previous section */
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.image-container-1 {
+  display: flex;
+  justify-content: center; /* Center-align the images horizontally */
+  gap: 0; /* No gaps between the images */
+}
+
+.image-box {
+  position: relative;
+  width: 50%; /* Each image takes up exactly half the container width */
+  padding: 0; /* Padding around the images */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.image-box img {
+  width: 100%;
+  height: 600px;
+  display: block;
+  border: none; /* No border around the images */
+}
+
+/* Overlay Content */
+.overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out top and bottom content */
+  padding: 1rem; /* Padding inside the overlay */
+  box-sizing: border-box;
+}
+
+.top-left {
+  align-self: flex-start; /* Align text to the top-left */
+  font-size: 1rem;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  padding: 0.5rem 1rem;
+  border-radius: 4px; /* Rounded corners */
+}
+
+.bottom-right {
+  align-self: flex-end; /* Align link to the bottom-right */
+}
+
+.explore-link-1 {
+  text-decoration: none;
+  color: #ff6f61; /* Match your brand color */
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  padding: 0.5rem 1rem;
+  border-radius: 4px; /* Rounded corners */
+  transition: color 0.3s ease;
+}
+
+.explore-link-1:hover {
+  color: #ff3c29; /* Darker shade on hover */
+}
+
+/* Responsive Two-Image Section Styles */
+@media (max-width: 768px) {
+  .image-container-1 {
+    flex-direction: column; /* Stack images vertically */
+  }
+
+  .image-box {
+    width: 100%; /* Full width for each image */
+  }
+
+  .overlay-content {
+    padding: 0.5rem; /* Reduce padding for smaller screens */
+  }
+
+  .top-left {
+    font-size: 1.2rem; /* Reduce font size */
+  }
+
+  .explore-link {
+    font-size: 0.9rem; /* Reduce font size */
+  }
+}
+
+/* Footer Styling */
+.footer {
+  background-color: black; /* Black background for contrast */
+  color: white; /* White text for visibility */
+  padding: 4rem 2rem 2rem; /* Top padding for content, bottom padding for copyright */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Space out left, middle, and right sections */
+  gap: 2rem; /* Add spacing between sections */
+  max-width: 1200px; /* Limit width for better readability */
+  margin: 0 auto; /* Center-align the footer content */
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+  flex: 1; /* Each section takes up equal width */
+}
+
+.footer-left h3,
+.footer-middle h3,
+.footer-right h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.footer-left p,
+.footer-middle p,
+.footer-right p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Left Section: Subscribe Form */
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subscribe-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.subscribe-form button {
+  padding: 0.5rem;
+  background-color: #ff6f61; /* Match your brand color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+  background-color: #ff3c29; /* Darker shade on hover */
+}
+
+/* Middle Section: Quick Links */
+.footer-middle ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.footer-middle ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-middle ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.footer-middle ul li a:hover {
+  color: #ff6f61; /* Highlight links on hover */
+}
+
+/* Right Section: Contact and Social Media */
+.social-media a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+  color: #ff6f61; /* Highlight social media link on hover */
+}
+
+.social-media i {
+  font-size: 1.2rem;
+}
+
+/* Bottom Section: Copyright */
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle divider line */
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(255, 255, 255, 0.8); /* Slightly dimmed text */
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 2rem;
+  }
+
+  .footer-left,
+  .footer-middle,
+  .footer-right {
+    text-align: center; /* Center-align text for smaller screens */
+  }
+}
